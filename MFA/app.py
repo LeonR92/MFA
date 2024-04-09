@@ -51,7 +51,8 @@ def verify():
     """A simple page to input OTP for verification."""
     if request.method == 'POST':
         otp_input = request.form['otp']
-        if pyotp.TOTP(USER_SECRET_SD).verify(otp_input):
+        # Change User_Secrets and session name both in this function and in dashboards
+        if pyotp.TOTP(USER_SECRET_SD).verify(otp_input): 
             session['otp_verified_sd'] = True
             return redirect('/dash/')
         else:
