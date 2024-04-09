@@ -12,7 +12,7 @@ def dashboard(flask_server):
     @flask_server.before_request
     def before_request():
         """Protects the /dash route, requiring OTP verification."""
-        if request.path == '/dash/' and not session.get('otp_verified'):
+        if request.path == '/dash/' and not session.get('otp_verified_sd'):
             return redirect(url_for('verify'))
     
     @flask_server.before_request
